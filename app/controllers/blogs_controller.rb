@@ -8,4 +8,11 @@ class BlogsController < ApplicationController
     @blogs = Blog.all 
   end
 
+  def new  
+  end
+
+  def create
+    render plain: params[:blog]
+  end
+
 end

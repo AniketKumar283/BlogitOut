@@ -1,0 +1,35 @@
+<style>
+    .heading {
+        font-family: monospace;
+        font-size: 1.5rem;
+        color: #444;
+        margin-bottom: 2rem;
+    }
+
+    .form_label {
+        font-family: monospace;
+        font-size: .9rem;
+    }
+</style>
+
+<h1 class='heading'> Create new Blog </h1>
+
+<%= form_with scope: :blog, data: { turbo: false }, url: blogs_path, local: true do |f| %>
+
+    <p class='form_label'>
+        <%= f.label :title %>
+        <br/> 
+        <%= f.text_field :title %>
+    </p>
+
+    <p class='form_label'>
+        <%= f.label :description%>
+        <br/>
+        <%= f.text_area :description%>
+    </p>
+
+    <p>
+        <%=f.submit%>
+    </p>
+
+<% end %>
