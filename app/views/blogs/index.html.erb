@@ -1,0 +1,42 @@
+<style>
+    .heading {
+        font-family: monospace;
+        font-size: 1.5rem;
+        color: #222;
+        margin-bottom: 2rem;
+    }
+    .table_heading {
+        font-family: monospace;
+        font-size: 1rem;
+        color: #333;
+        padding: 2.rem .5rem;
+    }
+    .table_content {
+        font-family: monospace;
+        font-size: .8rem;
+        color: #222;
+        padding: .2rem .5rem;
+    }
+</style>
+
+<h1 class='heading'>Blogs</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th class='table_heading'>Title</th>
+            <th class='table_heading'>Description</th>
+            <th class='table_heading'>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @blogs.each do |blog| %>
+            <tr>
+                <td class='table_content'><%=blog.title%></td>
+                <td class='table_content'><%=blog.description%></td>
+                <td class='table_content'>action_content</td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

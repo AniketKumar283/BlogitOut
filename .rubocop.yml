@@ -12,3 +12,6 @@ Layout/TrailingEmptyLines:
 
 Layout/TrailingWhitespace:
   Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
