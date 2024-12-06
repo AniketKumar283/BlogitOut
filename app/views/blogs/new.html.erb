@@ -10,9 +10,32 @@
         font-family: monospace;
         font-size: .9rem;
     }
+
+    .error_heading {
+        font-family: monospace;
+        font-size: 1rem;
+        color: red;
+        margin-bottom: 2rem;
+    }
+
+    .error_message {
+        font-family: monospace;
+        font-size: .9em;
+        color: #222;
+        margin-bottom: 2rem;
+    }
 </style>
 
 <h1 class='heading'> Create new Blog </h1>
+
+<% if(@blog.errors.any?) %>
+    <h2 class='error_heading'>These Errors are preventing creating of new Blog</h2>
+    <ul>
+        <% @blog.errors.full_messages.each do |error| %>
+             <li class='error_message'> <%=error%> </li>
+        <%end%>
+    </ul>
+<%end%>
 
 <%= form_with scope: :blog, data: { turbo: false }, url: blogs_path, local: true do |f| %>
 
