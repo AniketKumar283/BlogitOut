@@ -1,9 +1,9 @@
 class BlogsController < ApplicationController
+  before_action :set_blog, only: [ :show, :edit, :update, :destroy ]
   
   # Showing particular blog ( URL : localhost/blogs/:id )
   
   def show
-    @blog = Blog.find(params[:id])
   end
 
   # Showing all the blogs ( URL : localhost/blogs )
@@ -42,12 +42,9 @@ class BlogsController < ApplicationController
   # Editing the blogs ( URL : localhost/blogs/:id/edit )
 
   def edit
-    @blog = Blog.find(params[:id])
   end
 
   def update
-    @blog = Blog.find(params[:id])
-
     if @blog.update(params.require(:blog).permit(:title, :description))
       redirect_to @blog
     else
@@ -55,11 +52,22 @@ class BlogsController < ApplicationController
     end
   end
 
+  # Deleting the blogs
+
   def destroy
-    @blog = Blog.find(params[:id])
     @blog.destroy
 
     redirect_to blog_path
   end
 
+  private
+    
+    def set_blog
+      @blog = Blog.find(params[:id])
+    end
+
 end
+
+# So, in this controller in Edit, Update, Delete, Show actions we are repeating ourself with { @blog = Blog.find(params[:id]) }
+# this code so to inhance our code we can create a priavte function that covers this code and just calling it before any of
+# the concern actions runs.
