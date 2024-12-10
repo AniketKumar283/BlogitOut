@@ -1,12 +1,18 @@
 class BlogsController < ApplicationController
   
+  # Showing particular blog ( URL : localhost/blogs/:id )
+  
   def show
     @blog = Blog.find(params[:id])
   end
 
+  # Showing all the blogs ( URL : localhost/blogs )
+
   def index
     @blogs = Blog.all 
   end
+
+  # Creating new Blogs ( URL : localhost/blogs/new )
 
   def new
     # When we redirect from create route then only we have @blog, but in out new.html.erb file we don't have @blog for the first
@@ -33,6 +39,8 @@ class BlogsController < ApplicationController
     
   end
 
+  # Editing the blogs ( URL : localhost/blogs/:id/edit )
+
   def edit
     @blog = Blog.find(params[:id])
   end
@@ -45,7 +53,13 @@ class BlogsController < ApplicationController
     else
       render "edit"
     end
-    
+  end
+
+  def destroy
+    @blog = Blog.find(params[:id])
+    @blog.destroy
+
+    redirect_to blog_path
   end
 
 end

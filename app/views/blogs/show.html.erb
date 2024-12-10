@@ -10,6 +10,12 @@
         font-size: .8rem;
         color: #222;
     }
+    .table_content {
+        font-family: monospace;
+        font-size: .8rem;
+        color: #222;
+        padding: .2rem .5rem;
+    }
 </style>
 
 <h1 class='heading'>Title : </h1>
@@ -17,3 +23,7 @@
 
 <h1 class='heading'>Description : </h1>
 <p class='content'><%= @blog.description %></p> 
+
+<p class='table_content'> <%=link_to 'Edit', edit_blog_path(@blog.id)%> </p>
+<p class='table_content'> <%=link_to 'Delete', blog_path(@blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </p>
+<p class='table_content'> <%=link_to 'Show all blogs', blogs_path %> </p>

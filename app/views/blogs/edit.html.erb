@@ -24,6 +24,12 @@
         color: #222;
         margin-bottom: 2rem;
     }
+    .table_content {
+        font-family: monospace;
+        font-size: .8rem;
+        color: #222;
+        padding-top: .2rem;
+    }
 </style>
 
 <h1 class='heading'> Edit Blog </h1>
@@ -56,3 +62,5 @@
     </p>
 
 <% end %>
+
+<p class='table_content'> <%=link_to 'Show all blogs', blogs_path %> </p>
