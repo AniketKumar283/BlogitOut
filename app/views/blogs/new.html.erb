@@ -32,35 +32,37 @@
     }
 </style>
 
-<h1 class='heading'> Create new Blog </h1>
+<div class='flex flex-col'>
+    <h1 class='heading'> Create new Blog </h1>
 
-<% if(@blog.errors.any?) %>
-    <h2 class='error_heading'>These Errors are preventing creating of new Blog</h2>
-    <ul>
-        <% @blog.errors.full_messages.each do |error| %>
-             <li class='error_message'> <%=error%> </li>
-        <%end%>
-    </ul>
-<%end%>
+    <% if(@blog.errors.any?) %>
+        <h2 class='error_heading'>These Errors are preventing creating of new Blog</h2>
+        <ul>
+            <% @blog.errors.full_messages.each do |error| %>
+                <li class='error_message'> <%=error%> </li>
+            <%end%>
+        </ul>
+    <%end%>
 
-<%= form_with scope: :blog, data: { turbo: false }, url: blogs_path, local: true do |f| %>
+    <%= form_with scope: :blog, data: { turbo: false }, url: blogs_path, local: true do |f| %>
 
-    <p class='form_label'>
-        <%= f.label :title %>
-        <br/> 
-        <%= f.text_field :title %>
-    </p>
+        <p class='form_label'>
+            <%= f.label :title %>
+            <br/> 
+            <%= f.text_field :title %>
+        </p>
 
-    <p class='form_label'>
-        <%= f.label :description%>
-        <br/>
-        <%= f.text_area :description%>
-    </p>
+        <p class='form_label'>
+            <%= f.label :description%>
+            <br/>
+            <%= f.text_area :description%>
+        </p>
 
-    <p>
-        <%=f.submit%>
-    </p>
+        <p>
+            <%=f.submit%>
+        </p>
 
-<% end %>
+    <% end %>
 
-<p class='table_content'> <%=link_to 'Show all blogs', blogs_path %> </p>
+    <p class='table_content'> <%=link_to 'Show all blogs', blogs_path %> </p>
+</div>

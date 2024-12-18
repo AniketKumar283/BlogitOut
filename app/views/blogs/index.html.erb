@@ -16,33 +16,36 @@
         font-size: .8rem;
         color: #222;
         padding: .2rem .5rem;
+        /* display: flex; */
     }
 </style>
 
-<h1 class='heading'>Blogs</h1>
+<div class='flex flex-col'>
+    <h1 class='heading flex'>Blogs</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th class='table_heading'>Title</th>
-            <th class='table_heading'>Description</th>
-            <th class='table_heading' colspan='5'>Actions</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @blogs.each do |blog| %>
+    <table>
+        <thead>
             <tr>
-                <td class='table_content'><%=blog.title%></td>
-                <td class='table_content'><%=blog.description%></td>
-                <td class='table_content'> <%=link_to 'Show', blog_path(blog.id)%> </td>
-                <td class='table_content'> <%=link_to 'Edit', edit_blog_path(blog.id)%> </td>
-                <td class='table_content'> <%=link_to 'Delete', blog_path(blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </td>
+                <th class='table_heading'>Title</th>
+                <th class='table_heading'>Description</th>
+                <th class='table_heading' colspan='5'>Actions</th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
 
-<h3>
-    <td class='table_content'> <%=link_to 'Create New Blog', new_blog_path%> </td>
-</h3>
+        <tbody>
+            <% @blogs.each do |blog| %>
+                <tr>
+                    <td class='table_content'><%=blog.title%></td>
+                    <td class='table_content'><%=blog.description%></td>
+                    <td class='table_content'> <%=link_to 'Show', blog_path(blog.id)%> </td>
+                    <td class='table_content'> <%=link_to 'Edit', edit_blog_path(blog.id)%> </td>
+                    <td class='table_content'> <%=link_to 'Delete', blog_path(blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <h3 class='flex mt-4'>
+        <td class='table_content'> <%=link_to 'Create New Blog', new_blog_path%> </td>
+    </h3>
+</div>
