@@ -26,12 +26,11 @@
     }
     .table_content {
         font-family: monospace;
-        font-size: .8rem;
         color: #222;
-        padding-top: .2rem;
     }
 </style>
 
+<div class='flex flex-col'>
 <h1 class='heading'> Edit Blog </h1>
 
 <% if(@blog.errors.any?) %>
@@ -63,4 +62,5 @@
 
 <% end %>
 
-<p class='table_content'> <%=link_to 'Show all blogs', blogs_path %> </p>
+<p class='table_content pt-10 text-[1rem] font-bold'> <%=link_to 'Show all blogs', blogs_path %> </p>
+</div>

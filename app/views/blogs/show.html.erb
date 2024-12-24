@@ -14,16 +14,21 @@
         font-family: monospace;
         font-size: .8rem;
         color: #222;
-        padding: .2rem .5rem;
+        padding-right: 1rem;
+        text-decorations: bold;
     }
 </style>
 
-<h1 class='heading'>Title : </h1>
-<p class='content'><%= @blog.title %></p>
+<div class='flex flex-col'>
+<h1 class='heading font-semibold'>Title : </h1>
+<p class='content pt-2 pb-2'><%= @blog.title %></p>
 
-<h1 class='heading'>Description : </h1>
-<p class='content'><%= @blog.description %></p> 
+<h1 class='heading font-semibold'>Description : </h1>
+<p class='content pt-2 pb-2'><%= @blog.description %></p> 
 
-<p class='table_content'> <%=link_to 'Edit', edit_blog_path(@blog.id)%> </p>
-<p class='table_content'> <%=link_to 'Delete', blog_path(@blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </p>
-<p class='table_content'> <%=link_to 'Show all blogs', blogs_path %> </p>
+<div class='flex font-bold pt-5'>
+    <p class='table_content'> <%=link_to 'Edit', edit_blog_path(@blog.id)%> </p>
+    <p class='table_content'> <%=link_to 'Delete', blog_path(@blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </p>
+    <p class='table_content'> <%=link_to 'Show all blogs', blogs_path %> </p>
+</div>
+</div>
