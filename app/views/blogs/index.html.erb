@@ -15,7 +15,7 @@
         font-family: monospace;
         font-size: .8rem;
         color: #222;
-        padding: .2rem .5rem;
+        padding: .2rem 2rem;
         /* display: flex; */
     }
 </style>
@@ -28,6 +28,7 @@
             <tr>
                 <th class='table_heading'>Title</th>
                 <th class='table_heading'>Description</th>
+                <th class='table_heading'>User</th>
                 <th class='table_heading' colspan='5'>Actions</th>
             </tr>
         </thead>
@@ -37,6 +38,7 @@
                 <tr>
                     <td class='table_content'><%=blog.title%></td>
                     <td class='table_content'><%=blog.description%></td>
+                    <td class='table_content'><%=blog.user.username%></td>
                     <td class='table_content'> <%=link_to 'Show', blog_path(blog.id)%> </td>
                     <td class='table_content'> <%=link_to 'Edit', edit_blog_path(blog.id)%> </td>
                     <td class='table_content'> <%=link_to 'Delete', blog_path(blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </td>
