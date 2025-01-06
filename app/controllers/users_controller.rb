@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update(params.require(:user).permit(:username, :email, :password))
-      redirect_to blogs_path
+      redirect_to @user
     else
       render "edit", status: :unprocessable_entity
     end

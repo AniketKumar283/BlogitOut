@@ -1,0 +1,56 @@
+<style>
+    .heading {
+        font-family: monospace;
+        font-size: 1.5rem;
+        color: #444;
+        margin-bottom: 2rem;
+    }
+
+    .form_label {
+        font-family: monospace;
+        font-size: .9rem;
+    }
+
+    .error_heading {
+        font-family: monospace;
+        font-size: 1rem;
+        color: red;
+        margin-bottom: 2rem;
+    }
+
+    .error_message {
+        font-family: monospace;
+        font-size: .9em;
+        color: #222;
+        margin-bottom: 2rem;
+    }
+    .table_content {
+        font-family: monospace;
+        color: #222;
+    }
+</style>
+
+<div class='flex flex-col'>
+    <h1 class='heading'> Login </h1>
+
+    <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+
+        <p class='form_label'>
+            <%= f.label :email%>
+            <br/>
+            <%= f.email_field :email%>
+        </p>
+
+        <p class='form_label'>
+            <%= f.label :password%>
+            <br/>
+            <%= f.password_field :password%>
+        </p>
+
+        <p class='pt-10'>
+            <%=f.submit "Login", class:'cursor-pointer'%>
+        </p>
+
+    <% end %>
+
+</div>
