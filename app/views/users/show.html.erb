@@ -23,8 +23,12 @@
 <div class='flex flex-col'>
     <p class='font-bold'><span class='font-semibold'>Username : </span><%= @user.username%></p>
     <p class='font-bold'><span class='font-semibold'>Email : </span><%= @user.email%></p>
-    <p class='pt-5 text-[.8rem]'><%= link_to "Edit your profile", edit_user_path(@user.id)%></p>
-    <p class='pt-5 text-[.8rem]'><%= link_to "Logout", logout_path, data: {turbo_method: :delete}%></p>
+    
+    <% if current_user.id == @user.id %>
+        <p class='pt-5 text-[.8rem]'><%= link_to "Edit your profile", edit_user_path(@user.id)%></p>
+        <p class='pt-5 text-[.8rem]'><%= link_to "Logout", logout_path, data: {turbo_method: :delete}%></p>
+        <p class='pt-5 text-[.8rem]'><%= link_to "Delete", user_path(current_user), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"}%></p>
+    <% end %>
 
     <p class='pt-10 font-bold'>Your Blogs : </p>
 
@@ -47,8 +51,10 @@
                         <td class='table_content'><%=blog.description%></td>
                         <td class='table_content'><%=blog.user.username%></td>
                         <td class='table_content font-semibold'> <%=link_to 'Show', blog_path(blog.id)%> </td>
-                        <td class='table_content font-semibold'> <%=link_to 'Edit', edit_blog_path(blog.id)%> </td>
-                        <td class='table_content font-semibold'> <%=link_to 'Delete', blog_path(blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </td>
+                        <% if current_user.id == @user.id %>
+                            <td class='table_content font-semibold'> <%=link_to 'Edit', edit_blog_path(blog.id)%> </td>
+                            <td class='table_content font-semibold'> <%=link_to 'Delete', blog_path(blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </td>
+                        <% end %>
                     </tr>
                 <% end %>
             </tbody>

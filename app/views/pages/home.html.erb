@@ -1,7 +1,13 @@
 <div class="flex flex-col justify-center items-center h-full w-full">
     <p class="text-[#222] text-[2rem]">BlogitOut</p>
 
-    <p class="text-blue-500 text-[1.25rem] pt-[5rem]"> <%=link_to 'show all blogs', blogs_path %> </p>
+    
     <p class="text-blue-500 text-[1.25rem] pt-[5rem]"> <%=link_to 'Sign up', signup_path %> </p>
-    <p class="text-blue-500 text-[1.25rem] pt-[5rem]"> <%=link_to 'Login', login_path %> </p>
+    <%if logged_in?%>
+        <p class="text-blue-500 text-[1.25rem] pt-[5rem]"> <%=link_to 'show all blogs', blogs_path %> </p>
+        <p class="text-blue-500 text-[1.25rem] pt-[5rem]"> <%=link_to 'Logout', logout_path, data: {turbo_method: :delete} %> </p>
+        <p class="text-black text-[1.25rem] font-bold pt-[5rem]"><%= current_user.username %></p>
+    <%else%>
+        <p class="text-blue-500 text-[1.25rem] pt-[5rem]"> <%=link_to 'Login', login_path %> </p>
+    <%end%>
 </div>

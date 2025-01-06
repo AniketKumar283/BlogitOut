@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(params.require(:user).permit(:username, :email, :password))
 
     if @user.save 
+      session[:user_id] = @user.id
       redirect_to blogs_path
     else
       render "new", status: :unprocessable_entity
@@ -39,4 +40,10 @@ class UsersController < ApplicationController
     @users = User.all()
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    session[:user_id] = nil
+    @user.destroy
+    redirect_to root_path
+  end
 end

@@ -28,7 +28,7 @@ class BlogsController < ApplicationController
     # is comming from the web.
     
     @blog = Blog.new(params.require(:blog).permit(:title, :description))
-    @blog.user = User.first
+    @blog.user = current_user
     # render plain: @blog.inspect
     
     if @blog.save

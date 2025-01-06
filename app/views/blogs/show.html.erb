@@ -27,8 +27,10 @@
 <p class='content pt-2 pb-2'><%= @blog.description %></p> 
 
 <div class='flex font-bold pt-5'>
-    <p class='table_content'> <%=link_to 'Edit', edit_blog_path(@blog.id)%> </p>
-    <p class='table_content'> <%=link_to 'Delete', blog_path(@blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </p>
+    <% if current_user.id == @blog.user.id %>
+        <p class='table_content'> <%=link_to 'Edit', edit_blog_path(@blog.id)%> </p>
+        <p class='table_content'> <%=link_to 'Delete', blog_path(@blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </p>
+    <% end %>
     <p class='table_content'> <%=link_to 'Show all blogs', blogs_path %> </p>
 </div>
 </div>
