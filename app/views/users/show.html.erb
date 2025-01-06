@@ -1,0 +1,56 @@
+<style>
+    .heading {
+        font-family: monospace;
+        font-size: 1.5rem;
+        color: #222;
+        margin-bottom: 2rem;
+    }
+    .table_heading {
+        font-family: monospace;
+        font-size: 1rem;
+        color: #333;
+        padding: 2.rem .5rem;
+    }
+    .table_content {
+        font-family: monospace;
+        font-size: .8rem;
+        color: #222;
+        padding: .2rem 2rem;
+        /* display: flex; */
+    }
+</style>
+
+<div class='flex flex-col'>
+    <p class='font-bold'><span class='font-semibold'>Username : </span><%= @user.username%></p>
+    <p class='font-bold'><span class='font-semibold'>Email : </span><%= @user.email%></p>
+
+    <p class='pt-10 font-bold'>Your Blogs : </p>
+
+    <div class='flex flex-col pt-10'>
+
+        <table>
+            <thead>
+                <tr>
+                    <th class='table_heading'>Title</th>
+                    <th class='table_heading'>Description</th>
+                    <th class='table_heading'>User</th>
+                    <th class='table_heading' colspan='5'>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @blogs.each do |blog| %>
+                    <tr>
+                        <td class='table_content'><%=blog.title%></td>
+                        <td class='table_content'><%=blog.description%></td>
+                        <td class='table_content'><%=blog.user.username%></td>
+                        <td class='table_content font-semibold'> <%=link_to 'Show', blog_path(blog.id)%> </td>
+                        <td class='table_content font-semibold'> <%=link_to 'Edit', edit_blog_path(blog.id)%> </td>
+                        <td class='table_content font-semibold'> <%=link_to 'Delete', blog_path(blog.id), data: {turbo_method: :delete, turbo_confirm: "Are your sure ?"} %> </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+        
+    </div>
+</div>

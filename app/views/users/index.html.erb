@@ -1,0 +1,52 @@
+<style>
+    .heading {
+        font-family: monospace;
+        font-size: 1.5rem;
+        color: #222;
+        margin-bottom: 2rem;
+    }
+    .table_heading {
+        font-family: monospace;
+        font-size: 1rem;
+        color: #333;
+        padding: 2.rem .5rem;
+    }
+    .table_content {
+        font-family: monospace;
+        font-size: .8rem;
+        color: #222;
+        padding: .2rem 2rem;
+        /* display: flex; */
+    }
+</style>
+
+<div class='flex flex-col'>
+    <h1 class='heading flex'>Users</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th class='table_heading'>User Id</th>
+                <th class='table_heading'>Username</th>
+                <th class='table_heading'>Email</th>
+                <th class='table_heading'>Blogs</th>
+                <th class='table_heading' colspan='5'>Actions</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @users.each do |user| %>
+                <tr>
+                    <td class='table_content'><%=user.id%></td>
+                    <td class='table_content'><%=link_to user.username, user_path(user.id)%></td>
+                    <td class='table_content'><%=user.email%></td>
+                    <td class='table_content'><%=user.blogs.length%></td>
+                    <td class='table_content'> <%=link_to 'Show', user_path(user.id)%> </td>
+                    <td class='table_content'> <%=link_to 'Edit', edit_user_path(user.id)%> </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+</div>
