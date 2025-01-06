@@ -15,4 +15,10 @@ Rails.application.routes.draw do
   root "pages#home"
   resources :blogs, only: [ :show, :index, :new, :create, :edit, :update, :destroy ]
   # resources :blogs
+  
+  # User Signup route
+  
+  get "signup", to: "users#new"
+  resources :users, except: [ :new ]
+  
 end

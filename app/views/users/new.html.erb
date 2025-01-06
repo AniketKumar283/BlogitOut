@@ -31,36 +31,41 @@
 </style>
 
 <div class='flex flex-col'>
-    <h1 class='heading'> Create new Blog </h1>
+    <h1 class='heading'> Signup </h1>
 
-    <% if(@blog.errors.any?) %>
-        <h2 class='error_heading'>These Errors are preventing creating of new Blog</h2>
+    <% if(@user.errors.any?) %>
+        <h2 class='error_heading'>These Errors are preventing creating of new User</h2>
         <ul>
-            <% @blog.errors.full_messages.each do |error| %>
+            <% @user.errors.full_messages.each do |error| %>
                 <li class='error_message'> <%=error%> </li>
             <%end%>
         </ul>
     <%end%>
 
-    <%= form_with(model: @blog, local: true) do |f| %>
+    <%= form_with(model: @user, local: true) do |f| %>
 
         <p class='form_label'>
-            <%= f.label :title %>
+            <%= f.label :username %>
             <br/> 
-            <%= f.text_field :title %>
+            <%= f.text_field :username %>
         </p>
 
         <p class='form_label'>
-            <%= f.label :description%>
+            <%= f.label :email%>
             <br/>
-            <%= f.text_area :description%>
+            <%= f.email_field :email%>
         </p>
 
-        <p>
-            <%=f.submit%>
+        <p class='form_label'>
+            <%= f.label :password%>
+            <br/>
+            <%= f.password_field :password%>
+        </p>
+
+        <p class='pt-10'>
+            <%=f.submit "Signup", class:'cursor-pointer'%>
         </p>
 
     <% end %>
 
-    <p class='table_content pt-10 text-[1rem] font-bold'> <%=link_to 'Show all blogs', blogs_path %> </p>
 </div>
